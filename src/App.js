@@ -1,13 +1,16 @@
-import GlobalStyle from "./theme/GlobalStyle"
-
+import Banner from "./components/Banner";
+import GlobalStyle from "./theme/GlobalStyle";
+import PokeDataContext from "./services/context";
+import PokeList from "./components/PokeList";
 
 const App = () => {
   return (
-    <div className="App">
-     <GlobalStyle />
-     mon app
-    </div>
+    <PokeDataContext.Provider value={"data-api"}>
+      <GlobalStyle />
+      <Banner />
+      <PokeList />
+    </PokeDataContext.Provider>
   );
-}
+};
 
 export default App;

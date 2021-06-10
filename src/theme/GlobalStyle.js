@@ -6,7 +6,7 @@ import "sanitize.css/typography.css";
 
 const GlobalStyle = createGlobalStyle`
   ::selection {
-        background: #61dafb;
+        background: #FFC312;
     }
 
     body {
