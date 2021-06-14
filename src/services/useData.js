@@ -20,10 +20,10 @@ const useDataApi = () => {
         const promises = await Promise.all(requests)
         setResponse(promises)
         console.log("promises", promises)
-
         setIsLoading(false);
       } catch (error) {
-        setError(error)
+        setError(error);
+        setIsLoading(false);
       }
   }
   getAllData();
