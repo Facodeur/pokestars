@@ -7,5 +7,5 @@ const getAll = () => {
 const getByName = name => {
   return http.get(`/pokemon/${name}`)
 }
-
+// eslint-disable-next-line
 export default {getAll, getByName};

@@ -9,6 +9,7 @@ const PokeList = () => {
   useEffect(() => {
     getData();
     singleDataByName();
+    // eslint-disable-next-line
   }, [])
 
   const getData = () => {
