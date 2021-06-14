@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { pxToRem } from "../theme/helpers";
 
 const Banner = ({ className }) => {
   return (
@@ -18,4 +18,11 @@ export default styled(Banner)`
   border-top: 1px solid #fff;
   box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.5);
   margin-top: 30px;
+
+  h1 {
+    font-family: 'Wendy One', sans-serif;
+    font-size: ${pxToRem(50)};
+    color: #fbc531;
+    text-shadow: 3px 3px 2px #2f3640;
+  }
 `

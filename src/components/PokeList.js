@@ -31,6 +31,7 @@ const PokeList = ({ className }) => {
 };
 
 export default styled(PokeList)`
+  ${layout()}
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -44,10 +45,10 @@ export default styled(PokeList)`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     margin: 10px;
-    background: gray;
+    
     box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
   }
   
