@@ -1,41 +1,52 @@
-import { useContext, useState, useEffect } from "react";
+import styled from "styled-components";
+import { useContext } from "react";
 import PokeDataContext from "../services/context";
 
-const PokeList = () => {
+const PokeList = ({ className }) => {
   
-  const [pokeAll, setPokeAll] = useState(null);
-  const [singlePoke, setSinglePoke] = useState([])
-  const { getAll, getByName } = useContext(PokeDataContext)
-  useEffect(() => {
-    getData();
-    singleDataByName();
-    // eslint-disable-next-line
-  }, [])
+  const { response, loading } = useContext(PokeDataContext)
+ 
+    console.log("pokelist", response)
 
-  const getData = () => {
-    getAll().then(res => {
-      setPokeAll(res.data.results)
-      console.log("getData", res.data.results)
-    })
-  }
+  
 
-  const singleDataByName = () => {
-    pokeAll && pokeAll.map(poke => {
-      return getByName(poke.name).then(res => {
-        setSinglePoke({singlePoke: res.data})
-        console.log(singlePoke && singlePoke)
-      })
-    })
+
+  if(loading) {
+    return <p>Loading...</p>
   }
 
   
   return (
-    <ul>
-    {pokeAll && pokeAll.map(poke => {
+    <section className={className}>
+      <ul>
+    {response && response.map(poke => {
       return <li key={poke.name}>{poke.name}</li>
     })}
     </ul>
+    </section>
+    
   ) 
 };
 
-export default PokeList;
+export default styled(PokeList)`
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    background: gray;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
+  }
+  
+`

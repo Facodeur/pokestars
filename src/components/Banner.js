@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 const Banner = ({ className }) => {
   return (
-    <div className={className}>
+    <header className={className}>
       <h1>PokéStars</h1>
-    </div>
+    </header>
   )
 }
 

@@ -2,11 +2,15 @@ import Banner from "./components/Banner";
 import GlobalStyle from "./theme/GlobalStyle";
 import PokeDataContext from "./services/context";
 import PokeList from "./components/PokeList";
-import dataService from "./services/dataService"
+
+import useDataApi from "./services/useData";
 
 const App = () => {
+
+  const dataApi = useDataApi();
+
   return (
-    <PokeDataContext.Provider value={dataService}>
+    <PokeDataContext.Provider value={dataApi}>
       <GlobalStyle />
       <Banner />
       <PokeList />
