@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { layout } from "../theme/helpers";
 import { useContext } from "react";
 import PokeDataContext from "../services/context";
 
@@ -8,19 +9,20 @@ const PokeList = ({ className }) => {
  
     console.log("pokelist", response)
 
-  
-
-
   if(loading) {
     return <p>Loading...</p>
   }
 
-  
   return (
     <section className={className}>
       <ul>
     {response && response.map(poke => {
-      return <li key={poke.name}>{poke.name}</li>
+      return (
+        <li key={poke.data.name}>
+          <img src={poke.data.sprites.front_default} alt="" />
+          {poke.data.name}
+        
+        </li>)
     })}
     </ul>
     </section>

@@ -12,13 +12,22 @@ const useDataApi = () => {
     const getAllData = async () => {
       try {
         const res = await axios.get("https://pokeapi.co/api/v2/pokemon")
-        setResponse(res.data.results);
+        const data = res.data.results;
+
+        const requests = await data.map(({url}) => {
+          return axios.get(url)
+        })
+        const promises = await Promise.all(requests)
+        setResponse(promises)
+        console.log("promises", promises)
+
         setIsLoading(false);
       } catch (error) {
         setError(error)
       }
   }
   getAllData();
+  // eslint-disable-next-line
   }, [])
 
   return { response, error, isLoading }
