@@ -6,8 +6,6 @@ import PokeDataContext from "../services/context";
 const PokeList = ({ className }) => {
   
   const { response, loading } = useContext(PokeDataContext)
- 
-    console.log("pokelist", response)
 
   if(loading) {
     return <p>Loading...</p>
