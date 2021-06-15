@@ -2,7 +2,7 @@ import { useContext } from "react";
 import PokeDataContext from "../services/context";
 import styled from "styled-components";
 
-const SinglePoke = ({ className }) => {
+const PokeCard = ({ className }) => {
 
   const { response, isLoading } = useContext(PokeDataContext);
 
@@ -23,7 +23,7 @@ const SinglePoke = ({ className }) => {
   )
 }
 
-export default styled(SinglePoke)`
+export default styled(PokeCard)`
   display: flex;
   flex-direction: column;
   justify-content: center;

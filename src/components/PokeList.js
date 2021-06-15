@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { layout } from "../theme/helpers";
-import SinglePoke from "./SinglePoke";
+import PokeCard from "./PokeCard";
 
 const PokeList = ({ className }) => {
 
   return (
     <section className={className}>
       <ul>
-        <SinglePoke />
+        <PokeCard />
       </ul>
     </section>
   );
