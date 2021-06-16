@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import PokeDataContext from "../services/context";
 import styled from "styled-components";
+import Spinner from "./Spinner";
 
 const PokeCard = ({ className }) => {
 
   const { response, isLoading } = useContext(PokeDataContext);
 
   if(isLoading) {
-    return <p>Loading...</p>
+    return <Spinner />
   }
 
   return (
