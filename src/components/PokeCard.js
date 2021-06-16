@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import PokeDataContext from "../services/context";
 import styled from "styled-components";
 
@@ -14,10 +15,15 @@ const PokeCard = ({ className }) => {
     <>
     {response && response.map(poke => {
       return (
-        <li className={className} key={poke.data.name}>
+        <Link to={`/pokestar/${poke.data.name}`} key={poke.data.name}>
+          <div className={className} >
           <img src={poke.data.sprites.front_default} alt={`${poke.data.name}`} />
           <h4>{poke.data.name}</h4>
-        </li>)
+        </div>
+        </Link>
+          
+        
+        )
     })}
     </>
   )

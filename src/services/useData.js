@@ -13,14 +13,14 @@ const useDataApi = () => {
       try {
         const res = await axios.get("https://pokeapi.co/api/v2/pokemon")
         const data = res.data.results;
-
         const requests = await data.map(({url}) => {
           return axios.get(url)
         })
+        
         const promises = await Promise.all(requests)
         setResponse(promises)
-        console.log("promises", promises)
         setIsLoading(false);
+        console.log("promises", promises)
       } catch (error) {
         setError(error);
         setIsLoading(false);

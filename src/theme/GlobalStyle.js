@@ -16,6 +16,11 @@ const GlobalStyle = createGlobalStyle`
         background: #282c34;
     }
 
+    a {
+        text-decoration:none;
+        color: #fff;
+    }
+
     .bolder {
         font-weight: 900;
     }
