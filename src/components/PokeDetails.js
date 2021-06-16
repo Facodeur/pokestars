@@ -1,14 +1,17 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-const PokeDetails = () => {
+const PokeDetails = ({ className }) => {
   let { name } = useParams();
   console.log(name)
   return (
-    <div>
+    <div className={className}>
       <h3>Je suis le pokemon {name}</h3>
     </div>
   )
 }
 
-export default PokeDetails
+export default styled(PokeDetails)`
+
+
+`
