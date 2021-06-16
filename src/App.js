@@ -6,9 +6,7 @@ import PokeDetails from "./components/PokeDetails";
 import useDataApi from "./services/useData";
 import { Switch, Route } from "react-router-dom";
 
-
 const App = () => {
-
   const dataApi = useDataApi();
 
   return (
@@ -23,7 +21,6 @@ const App = () => {
           <PokeDetails />
         </Route>
       </Switch>
-      
     </PokeDataContext.Provider>
   );
 };

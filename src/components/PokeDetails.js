@@ -1,17 +1,25 @@
-import { useParams } from 'react-router-dom';
-import styled from 'styled-components';
+import { useParams } from "react-router-dom";
+import { useEffect,useContext } from "react";
+import PokeDataContext from "../services/context";
+import styled from "styled-components";
 
 const PokeDetails = ({ className }) => {
+
   let { name } = useParams();
-  console.log(name)
+  const { getSingleData, singleResponse } = useContext(PokeDataContext);
+
+  useEffect(() => {
+    getSingleData(name);
+    // eslint-disable-next-line
+  }, [name]);
+
+
+  
   return (
     <div className={className}>
-      <h3>Je suis le pokemon {name}</h3>
+      <h3>Je suis le pokemon {singleResponse && singleResponse.name}</h3>
     </div>
-  )
-}
+  );
+};
 
-export default styled(PokeDetails)`
-
-
-`
+export default styled(PokeDetails)``;
