@@ -2,18 +2,22 @@ import { useParams } from "react-router-dom";
 import { useEffect,useContext } from "react";
 import PokeDataContext from "../services/context";
 import styled from "styled-components";
+import Spinner from "./Spinner";
 
 const PokeDetails = ({ className }) => {
 
   let { name } = useParams();
-  const { getSingleData, singleResponse } = useContext(PokeDataContext);
+  const { getSingleData, singleResponse, isLoading } = useContext(PokeDataContext);
 
   useEffect(() => {
+    
     getSingleData(name);
     // eslint-disable-next-line
   }, [name]);
 
-
+  if(isLoading) {
+    return <Spinner />
+  }
   
   return (
     <div className={className}>

@@ -32,11 +32,11 @@ const useDataApi = () => {
   }, [])
 
   const getSingleData = async (name) => {
-    
+    setIsLoading(true);
     const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
     const data = res.data;
     setSingleResponse(data);
-    
+    setIsLoading(false);
     // console.log("datasingle", data)
   }
 
