@@ -12,18 +12,30 @@ const PokeDetails = ({ className }) => {
   useEffect(() => {
     
     getOnePoke(name);
+    console.log(onePoke && onePoke)
     // eslint-disable-next-line
   }, [name]);
 
   if(isLoading) {
     return <Spinner />
   }
+
+
   
   return (
     <div className={className}>
-      <h3>Je suis le pokemon {onePoke && onePoke.name}</h3>
+      
+      <img src={onePoke.sprites.front_default} alt="" />
     </div>
   );
 };
 
-export default styled(PokeDetails)``;
+export default styled(PokeDetails)`
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  img {
+    width: 200px;
+    height: 200px;
+  }
+`;
