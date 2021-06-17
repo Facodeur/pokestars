@@ -16,6 +16,20 @@ const PokeDetails = ({ className }) => {
 
   if (isLoading) {
     return <Spinner />;
+  } else {
+    return (
+      <>
+        {onePoke && (
+          <div className={className}>
+            <h4>{onePoke.name}</h4>
+            <img
+              src={onePoke && onePoke.sprites.other.dream_world.front_default}
+              alt=""
+            />
+          </div>
+        )}
+      </>
+    );
   }
 
   // const stats = onePoke && onePoke.stats.map(stat => {
@@ -23,17 +37,6 @@ const PokeDetails = ({ className }) => {
   // })
 
   //console.log(stats)
-
-  return (
-    <>
-      {onePoke && (
-        <div className={className}>
-          <h4>{onePoke.name}</h4>
-          <img src={onePoke.sprites.other.dream_world.front_default} alt="" />
-        </div>
-      )}
-    </>
-  );
 };
 
 export default styled(PokeDetails)`
