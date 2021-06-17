@@ -7,11 +7,11 @@ import Spinner from "./Spinner";
 const PokeDetails = ({ className }) => {
 
   let { name } = useParams();
-  const { getSingleData, singleResponse, isLoading } = useContext(PokeDataContext);
+  const { getOnePoke, onePoke, isLoading } = useContext(PokeDataContext);
 
   useEffect(() => {
     
-    getSingleData(name);
+    getOnePoke(name);
     // eslint-disable-next-line
   }, [name]);
 
@@ -21,7 +21,7 @@ const PokeDetails = ({ className }) => {
   
   return (
     <div className={className}>
-      <h3>Je suis le pokemon {singleResponse && singleResponse.name}</h3>
+      <h3>Je suis le pokemon {onePoke && onePoke.name}</h3>
     </div>
   );
 };

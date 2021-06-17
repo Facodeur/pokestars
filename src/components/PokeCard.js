@@ -6,7 +6,7 @@ import Spinner from "./Spinner";
 
 const PokeCard = ({ className }) => {
 
-  const { response, isLoading } = useContext(PokeDataContext);
+  const { pokeList, isLoading } = useContext(PokeDataContext);
 
   if(isLoading) {
     return <Spinner />
@@ -14,7 +14,7 @@ const PokeCard = ({ className }) => {
 
   return (
     <>
-    {response && response.map(poke => {
+    {pokeList && pokeList.map(poke => {
       return (
         <Link to={`/pokestar/${poke.data.name}`} key={poke.data.name}>
           <div className={className} >

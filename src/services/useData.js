@@ -2,15 +2,15 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 const useDataApi = () => {
-  const [response, setResponse] = useState(null);
-  const [singleResponse, setSingleResponse] = useState(null);
+  const [pokeList, setPokeList] = useState(null);
+  const [onePoke, setOnePoke] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
     
-    const getAllData = async () => {
+    const getPokeList = async () => {
       try {
         const res = await axios.get("https://pokeapi.co/api/v2/pokemon")
         const data = res.data.results;
@@ -19,7 +19,7 @@ const useDataApi = () => {
         })
 
         const promises = await Promise.all(requests)
-        setResponse(promises)
+        setPokeList(promises)
         setIsLoading(false);
 
       } catch (error) {
@@ -27,20 +27,20 @@ const useDataApi = () => {
         setIsLoading(false);
       }
   }
-  getAllData();
+  getPokeList();
   // eslint-disable-next-line
   }, [])
 
-  const getSingleData = async (name) => {
+  const getOnePoke = async (name) => {
     setIsLoading(true);
     const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
     const data = res.data;
-    setSingleResponse(data);
+    setOnePoke(data);
     setIsLoading(false);
     // console.log("datasingle", data)
   }
 
-  return { response, error, isLoading, getSingleData, singleResponse }
+  return { pokeList, error, isLoading, getOnePoke, onePoke }
 }
 
 export default useDataApi;
