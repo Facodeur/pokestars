@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import PokeDataContext from "../services/context";
 import styled from "styled-components";
+import ProgressBar from './ProgressBar';
 
 const PokeStats = ({ className }) => {
 
@@ -11,9 +12,8 @@ const PokeStats = ({ className }) => {
       {onePoke && onePoke.stats.map(stat => {
         return (
           <div className={className} key={stat.stat.name}>
-            <p>{stat.stat.name}  {""}
-              <meter min="0" max="100" value={stat.base_stat}></meter>
-            </p>
+            <p>{stat.stat.name}</p>
+            <ProgressBar done={stat.base_stat} />
           </div>
         )
       })}
