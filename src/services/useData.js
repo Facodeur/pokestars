@@ -47,7 +47,6 @@ const useDataApi = () => {
   }
 
   const goPrev = () => {
-    console.log(offset)
     if(offset > 0) {
       setOffset(count => count -20)
     }
