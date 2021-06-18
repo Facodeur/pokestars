@@ -10,7 +10,7 @@ const PokeDetails = ({ className }) => {
 
   useEffect(() => {
     getOnePoke(name);
-    console.log(onePoke && onePoke);
+    
     // eslint-disable-next-line
   }, [name]);
 
@@ -23,7 +23,7 @@ const PokeDetails = ({ className }) => {
           <div className={className}>
             <h4>{onePoke.name}</h4>
             <img
-              src={onePoke && onePoke.sprites.other.dream_world.front_default}
+              src={onePoke.sprites.other.dream_world.front_default}
               alt=""
             />
           </div>
