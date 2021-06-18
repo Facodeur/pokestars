@@ -6,13 +6,14 @@ const useDataApi = () => {
   const [onePoke, setOnePoke] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
-    
+
     const getPokeList = async () => {
       try {
-        const res = await axios.get("https://pokeapi.co/api/v2/pokemon")
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`)
         const data = res.data.results;
         const requests = await data.map(({url}) => {
           return axios.get(url)
@@ -28,8 +29,8 @@ const useDataApi = () => {
       }
   }
   getPokeList();
-  // eslint-disable-next-line
-  }, [])
+  
+  }, [offset])
 
   const getOnePoke = async (name) => {
     setIsLoading(true);
@@ -37,10 +38,22 @@ const useDataApi = () => {
     const data = res.data;
     setOnePoke(data);
     setIsLoading(false);
-    // console.log("datasingle", data)
   }
 
-  return { pokeList, error, isLoading, getOnePoke, onePoke }
+  const goNext = () => {
+    if(offset < 200) {
+      setOffset(count => count +20)
+    }
+  }
+
+  const goPrev = () => {
+    console.log(offset)
+    if(offset > 0) {
+      setOffset(count => count -20)
+    }
+  }
+
+  return { pokeList, error, isLoading, getOnePoke, onePoke, goNext, goPrev }
 }
 
 export default useDataApi;
