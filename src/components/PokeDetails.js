@@ -3,6 +3,7 @@ import { useEffect, useContext } from "react";
 import PokeDataContext from "../services/context";
 import styled from "styled-components";
 import Spinner from "./Spinner";
+import PokeStats from "./PokeStats";
 
 const PokeDetails = ({ className }) => {
   let { name } = useParams();
@@ -10,7 +11,7 @@ const PokeDetails = ({ className }) => {
 
   useEffect(() => {
     getOnePoke(name);
-    
+    console.log(onePoke && onePoke);
     // eslint-disable-next-line
   }, [name]);
 
@@ -26,6 +27,7 @@ const PokeDetails = ({ className }) => {
               src={onePoke.sprites.other.dream_world.front_default}
               alt=""
             />
+            <PokeStats />
           </div>
         )}
       </>
