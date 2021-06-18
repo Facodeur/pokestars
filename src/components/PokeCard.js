@@ -16,14 +16,10 @@ const PokeCard = ({ className }) => {
     <>
     {pokeList && pokeList.map(poke => {
       return (
-        <Link to={`/pokestar/${poke.data.name}`} key={poke.data.name}>
-          <div className={className} >
+        <Link className={className} to={`/pokestar/${poke.data.name}`} key={poke.data.name}>
           <img src={poke.data.sprites.front_default} alt={`${poke.data.name}`} />
           <h4>{poke.data.name}</h4>
-        </div>
         </Link>
-          
-        
         )
     })}
     </>
