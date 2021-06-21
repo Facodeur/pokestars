@@ -8,26 +8,28 @@ const PokeStats = ({ className }) => {
   const { onePoke } = useContext(PokeDataContext);
 
   return (
-    <>
+    <div className={className}>
       {onePoke && onePoke.stats.map(stat => {
         return (
-          <div className={className} key={stat.stat.name}>
+          <div className="stat" key={stat.stat.name}>
             <p>{stat.stat.name}</p>
             <ProgressBar done={stat.base_stat} />
           </div>
         )
       })}
-    </>
+    </div>
   )
 }
 
 export default styled(PokeStats)`
   display:flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  
-  width: 200px;
+  max-width: 800px;
+  .stat {
+    margin: 10px;
+  }
   p {
     margin-bottom: 0;
   }
