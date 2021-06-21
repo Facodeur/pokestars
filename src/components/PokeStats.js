@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ProgressBar from './ProgressBar';
 
 const PokeStats = ({ className }) => {
-
+  
   const { onePoke } = useContext(PokeDataContext);
 
   return (
@@ -22,5 +22,13 @@ const PokeStats = ({ className }) => {
 }
 
 export default styled(PokeStats)`
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
   width: 200px;
+  p {
+    margin-bottom: 0;
+  }
 `
