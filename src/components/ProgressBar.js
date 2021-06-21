@@ -21,7 +21,6 @@ const ProgressBar = ({ done, className }) => {
 			</div>
 		</div>
     </div>
-		
 	)
 }
 
@@ -31,8 +30,8 @@ export default styled(ProgressBar)`
 	border-radius: 20px;
 	position: relative;
 	margin: 15px 0;
-	height: 30px;
-	width: 300px;
+	height: 25px;
+	width: 250px;
 }
 
 .progress-done {

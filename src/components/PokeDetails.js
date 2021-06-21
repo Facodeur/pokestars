@@ -33,12 +33,6 @@ const PokeDetails = ({ className }) => {
       </>
     );
   }
-
-  // const stats = onePoke && onePoke.stats.map(stat => {
-  //    return stat.base_stat;
-  // })
-
-  //console.log(stats)
 };
 
 export default styled(PokeDetails)`
