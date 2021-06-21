@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 const useDataApi = () => {
   const [pokeList, setPokeList] = useState(null);
   const [onePoke, setOnePoke] = useState(null);
+  const [pokeDescription, setPokeDescription] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [offset, setOffset] = useState(0);
@@ -36,7 +37,10 @@ const useDataApi = () => {
     setIsLoading(true);
     const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
     const data = res.data;
+    const description = data.species.url;
+    const resDescription = await axios.get(description)
     setOnePoke(data);
+    setPokeDescription(resDescription);
     setIsLoading(false);
   }
 
@@ -52,7 +56,7 @@ const useDataApi = () => {
     }
   }
 
-  return { pokeList, error, isLoading, getOnePoke, onePoke, goNext, goPrev }
+  return { pokeList, pokeDescription, error, isLoading, getOnePoke, onePoke, goNext, goPrev }
 }
 
 export default useDataApi;
