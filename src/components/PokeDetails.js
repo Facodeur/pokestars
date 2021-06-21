@@ -4,11 +4,14 @@ import PokeDataContext from "../services/context";
 import styled from "styled-components";
 import Spinner from "./Spinner";
 import PokeStats from "./PokeStats";
+import PokeDescrition from "./PokeDescription";
 
 const PokeDetails = ({ className }) => {
   let { name } = useParams();
-  const { getOnePoke, onePoke, isLoading } = useContext(PokeDataContext);
 
+  const { getOnePoke, onePoke, isLoading } = useContext(PokeDataContext);
+  
+  
   useEffect(() => {
     getOnePoke(name);
     console.log(onePoke && onePoke);
@@ -23,6 +26,7 @@ const PokeDetails = ({ className }) => {
         {onePoke && (
           <div className={className}>
             <h4>{onePoke.name}</h4>
+            <PokeDescrition />
             <img
               src={onePoke.sprites.other.dream_world.front_default}
               alt=""
