@@ -14,7 +14,6 @@ const PokeDetails = ({ className }) => {
   
   useEffect(() => {
     getOnePoke(name);
-    console.log(onePoke && onePoke);
     // eslint-disable-next-line
   }, [name]);
 
