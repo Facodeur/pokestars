@@ -1,10 +1,11 @@
 import Banner from "./components/Banner";
 import GlobalStyle from "./theme/GlobalStyle";
 import PokeDataContext from "./services/context";
-import PokeList from "./components/PokeList";
-import PokeDetails from "./components/PokeDetails";
 import useDataApi from "./services/useData";
 import { Switch, Route } from "react-router-dom";
+import PokeList from "./components/PokeList";
+import PokeDetails from "./components/PokeDetails";
+import Footer from "./components/Footer";
 
 const App = () => {
   const dataApi = useDataApi();
@@ -21,6 +22,7 @@ const App = () => {
           <PokeDetails />
         </Route>
       </Switch>
+      <Footer />
     </PokeDataContext.Provider>
   );
 };
