@@ -22,8 +22,9 @@ const PokeCard = ({ className }) => {
         animate={{ scaleY: 1 }}
         exit={{ scaleY: 0 }}
         transition={{ duration: 0.4 }}
+        key={poke.data.name}
         >
-        <Link className={className} to={`/pokestar/${poke.data.name}`} key={poke.data.name}>
+        <Link className={className} to={`/pokestar/${poke.data.name}`}>
           <img src={poke.data.sprites.front_default} alt={`${poke.data.name}`} />
           <h4>{poke.data.name}</h4>
         </Link>
