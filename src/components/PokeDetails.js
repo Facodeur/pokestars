@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useContext } from "react";
 import PokeDataContext from "../services/context";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { layout } from "../theme/helpers";
 import Spinner from "./Spinner";
 import PokeStats from "./PokeStats";
@@ -22,7 +23,12 @@ const PokeDetails = ({ className }) => {
     return <Spinner />;
   } else {
     return (
-      <>
+      <motion.div
+      initial={{ scaleY: 0 }}
+      animate={{ scaleY: 1 }}
+      exit={{ scaleY: 0 }}
+      transition={{ duration: 0.4 }}
+      >
         {onePoke && (
           <div className={className}>
             <h4>{onePoke.name}</h4>
@@ -34,7 +40,7 @@ const PokeDetails = ({ className }) => {
             <PokeStats />
           </div>
         )}
-      </>
+      </motion.div>
     );
   }
 };

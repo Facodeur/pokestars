@@ -11,7 +11,6 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         font-size: 16px;
-        transition: 500ms;
         color: white;
         background: #282c34;
     }
@@ -21,14 +20,5 @@ const GlobalStyle = createGlobalStyle`
         color: #fff;
     }
 
-    .bolder {
-        font-weight: 900;
-    }
-    .bold {
-        font-weight: 700;
-    }
-    .text-center {
-        justify-content: center;
-    }
 `;
 export default GlobalStyle;

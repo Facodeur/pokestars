@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import PokeDataContext from "../services/context";
 import styled from "styled-components";
 import Spinner from "./Spinner";
+import {motion} from "framer-motion";
 
 const PokeCard = ({ className }) => {
-
+  
   const { pokeList, isLoading } = useContext(PokeDataContext);
 
   if(isLoading) {
@@ -16,10 +17,17 @@ const PokeCard = ({ className }) => {
     <>
     {pokeList && pokeList.map(poke => {
       return (
+        <motion.div 
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: 1 }}
+        exit={{ scaleY: 0 }}
+        transition={{ duration: 0.4 }}
+        >
         <Link className={className} to={`/pokestar/${poke.data.name}`} key={poke.data.name}>
           <img src={poke.data.sprites.front_default} alt={`${poke.data.name}`} />
           <h4>{poke.data.name}</h4>
         </Link>
+        </motion.div>
         )
     })}
     </>

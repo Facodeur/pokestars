@@ -1,5 +1,6 @@
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { AnimatePresence } from "framer-motion";
 import GlobalStyle from "./theme/GlobalStyle";
 import PokeDataContext from "./services/context";
 import useDataApi from "./services/useData";
@@ -10,13 +11,15 @@ import Footer from "./components/Footer";
 
 const App = ({ className }) => {
   const dataApi = useDataApi();
+  const location = useLocation();
 
   return (
+    <AnimatePresence exitBeforeEnter initial={false}>
     <PokeDataContext.Provider value={dataApi}>
       <GlobalStyle />
       <div className={className}>
         <Banner />
-        <Switch>
+        <Switch location={location} key={location.pathname}>
           <Route exact path="/">
             <PokeList />
           </Route>
@@ -27,6 +30,7 @@ const App = ({ className }) => {
         <Footer />
       </div>
     </PokeDataContext.Provider>
+    </AnimatePresence>
   );
 };
 
