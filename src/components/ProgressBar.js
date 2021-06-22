@@ -44,6 +44,7 @@ export default styled(ProgressBar)`
 	justify-content: center;
 	height: 100%;
 	width: 0;
+	max-width: 100%;
 	opacity: 0; 
 	transition: 1s ease 0.3s;
 }

@@ -34,4 +34,10 @@ export default styled(PokeStats)`
   p {
     margin-bottom: 0;
   }
+
+  @media only screen and (max-width: 569px) {
+    .stat {
+      margin: 0;
+    }
+  }
 `

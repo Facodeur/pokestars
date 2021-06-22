@@ -31,7 +31,7 @@ const PokeDetails = ({ className }) => {
       >
         {onePoke && (
           <div className={className}>
-            <h4>{onePoke.name}</h4>
+            <h3>{onePoke.name}</h3>
             <PokeDescrition />
             <img
               src={onePoke.sprites.other.dream_world.front_default}
