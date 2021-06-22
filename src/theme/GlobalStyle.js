@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         font-size: 16px;
-        transition: 600ms;
+        transition: 500ms;
         color: white;
         background: #282c34;
     }

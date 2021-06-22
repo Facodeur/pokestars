@@ -27,6 +27,7 @@ export default styled(PokeStats)`
   justify-content: center;
   align-items: center;
   max-width: 800px;
+  margin-bottom: 50px;
   .stat {
     margin: 10px;
   }
