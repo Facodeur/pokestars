@@ -26,7 +26,7 @@ export default styled(PokeList)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  margin-bottom: 50px;
   .buttons-group {
     display: flex;
     justify-content: space-between;
