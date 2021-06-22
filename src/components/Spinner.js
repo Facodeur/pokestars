@@ -15,7 +15,7 @@ const Spinner = ({ className }) => {
 export default styled(Spinner)`
 .loader {
   position: absolute;
-  top: calc(50% - 32px);
+  top: calc(60%);
   left: calc(50% - 32px);
   width: 64px;
   height: 64px;

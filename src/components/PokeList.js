@@ -3,9 +3,15 @@ import styled from "styled-components";
 import { layout } from "../theme/helpers";
 import PokeCard from "./PokeCard";
 import PokeDataContext from "../services/context";
+import Spinner from "./Spinner";
+
 
 const PokeList = ({ className }) => {
-  const { goNext, goPrev } = useContext(PokeDataContext);
+  const { goNext, goPrev, isLoading } = useContext(PokeDataContext);
+
+  if(isLoading) {
+    return <Spinner />
+  }
 
   return (
     <div className={className}>
