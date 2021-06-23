@@ -2,7 +2,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import { layout } from "../theme/helpers";
 import PokeCard from "./PokeCard";
-import PokeDataContext from "../services/context";
+import PokeDataContext from "../context/context";
 import Spinner from "./Spinner";
 
 

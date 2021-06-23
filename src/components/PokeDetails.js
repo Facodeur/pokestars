@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useContext } from "react";
-import PokeDataContext from "../services/context";
+import PokeDataContext from "../context/context";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { layout } from "../theme/helpers";
@@ -12,8 +12,7 @@ const PokeDetails = ({ className }) => {
   let { name } = useParams();
 
   const { getOnePoke, onePoke, isLoading } = useContext(PokeDataContext);
-  
-  
+
   useEffect(() => {
     getOnePoke(name);
     // eslint-disable-next-line
@@ -24,19 +23,16 @@ const PokeDetails = ({ className }) => {
   } else {
     return (
       <motion.div
-      initial={{ scaleY: 0 }}
-      animate={{ scaleY: 1 }}
-      exit={{ scaleY: 0 }}
-      transition={{ duration: 0.4 }}
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: 1 }}
+        exit={{ scaleY: 0 }}
+        transition={{ duration: 0.4 }}
       >
         {onePoke && (
           <div className={className}>
             <h3>{onePoke.name}</h3>
             <PokeDescrition />
-            <img
-              src={onePoke.sprites.other.dream_world.front_default}
-              alt=""
-            />
+            <img src={onePoke.sprites.other.dream_world.front_default} alt="" />
             <PokeStats />
           </div>
         )}
