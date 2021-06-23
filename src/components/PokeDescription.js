@@ -6,7 +6,7 @@ import styled from "styled-components";
 const PokeDescription = ({ className }) => {
   
   const { pokeDescription } = useContext(PokeDataContext);
-  const descriptionFr = `${pokeDescription && pokeDescription.data.flavor_text_entries[16].flavor_text}`;
+  const descriptionFr = `${pokeDescription && pokeDescription.flavor_text_entries[16].flavor_text}`;
 
   return (
     <p className={className}>

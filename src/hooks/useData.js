@@ -1,5 +1,8 @@
-import axios from "axios";
+//import axios from "axios";
 import { useState, useEffect } from "react";
+
+const Pokedex = require("pokeapi-js-wrapper");
+const P = new Pokedex.Pokedex();
 
 const useDataApi = () => {
   const [pokeList, setPokeList] = useState(null);
@@ -7,21 +10,24 @@ const useDataApi = () => {
   const [pokeDescription, setPokeDescription] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [offset, setOffset] = useState(0);
+  const [interval, setInterval] = useState({
+    offset: 0,
+    limit: 20
+  });
 
   useEffect(() => {
     setIsLoading(true);
 
     const getPokeList = async () => {
       try {
-        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}`)
-        const data = res.data.results;
-        const requests = await data.map(({url}) => {
-          return axios.get(url)
-        })
+        const pokemons = await P.getPokemonsList(interval)
+        const data = pokemons.results;
+        const requests = await data.map(({name}) => 
+          P.getPokemonByName(name)
+        )
 
-        const promises = await Promise.all(requests)
-        setPokeList(promises)
+        const results = await Promise.all(requests)
+        setPokeList(results)
         setIsLoading(false);
 
       } catch (error) {
@@ -31,28 +37,28 @@ const useDataApi = () => {
   }
   getPokeList();
   
-  }, [offset])
+  }, [interval])
 
   const getOnePoke = async (name) => {
     setIsLoading(true);
-    const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-    const data = res.data;
-    const description = data.species.url;
-    const resDescription = await axios.get(description)
-    setOnePoke(data);
-    setPokeDescription(resDescription);
+    const pokemon = await P.getPokemonByName(name);
+    const species = await P.getPokemonSpeciesByName(name);
+
+    setOnePoke(pokemon);
+    setPokeDescription(species);
     setIsLoading(false);
   }
 
   const goNext = () => {
-    if(offset < 200) {
-      setOffset(count => count +20)
+    if(interval.offset < 200) {
+      setInterval({...interval, offset: interval.offset +20})
     }
   }
 
   const goPrev = () => {
-    if(offset > 0) {
-      setOffset(count => count -20)
+    if(interval.offset > 0) {
+      setInterval({...interval, offset: interval.offset -20})
+
     }
   }
 
