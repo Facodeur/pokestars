@@ -1,17 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from "styled-components";
 
 const ProgressBar = ({ done, className }) => {
   const [style, setStyle] = useState({});
 	
-	setTimeout(() => {
-		const newStyle = {
-			opacity: 1,
-			width: `${done}%`
-		}
+	useEffect(() => {
 		
-		setStyle(newStyle);
-	}, 200);
+	const timer =	setTimeout(() => {
+				const newStyle = {
+					opacity: 1,
+					width: `${done}%`
+				}
+				
+				setStyle(newStyle);
+			}, 200);
+
+		return () => {
+			clearTimeout(timer)
+		}
+		// eslint-disable-next-line
+	}, [])
+	
 	
 	return (
     <div className={className}>
