@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useContext } from "react";
 import PokeDataContext from "../context/context";
 import styled from "styled-components";
@@ -30,6 +30,7 @@ const PokeDetails = ({ className }) => {
       >
         {onePoke && (
           <div className={className}>
+            <Link to="/"> Retour à l'accueil</Link>
             <h3>{onePoke.name}</h3>
             <PokeDescrition />
             <img src={onePoke.sprites.other.dream_world.front_default} alt="" />
