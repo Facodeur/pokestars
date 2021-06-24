@@ -5,8 +5,8 @@ import GlobalStyle from "./theme/GlobalStyle";
 import PokeDataContext from "./context/context";
 import useDataApi from "./hooks/useData";
 import Banner from "./components/Banner";
-import PokeList from "./components/PokeList";
-import PokeDetails from "./components/PokeDetails";
+import Home from "./pages/Home";
+import PokeDetails from "./pages/PokeDetails";
 import Footer from "./components/Footer";
 
 const App = ({ className }) => {
@@ -21,7 +21,7 @@ const App = ({ className }) => {
         <Banner />
         <Switch location={location} key={location.pathname}>
           <Route exact path="/">
-            <PokeList />
+            <Home />
           </Route>
           <Route exact path="/pokestar/:name">
             <PokeDetails />
