@@ -33,6 +33,7 @@ export default styled(PokeList)`
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
+  margin-top: 50px;
   .buttons-group {
     display: flex;
     justify-content: space-between;
