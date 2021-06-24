@@ -4,10 +4,11 @@ import { layout } from "../theme/helpers";
 import PokeCard from "./PokeCard";
 import PokeDataContext from "../context/context";
 import Spinner from "./Spinner";
+import Paginate from "./Paginate";
 
 
 const PokeList = ({ className }) => {
-  const { goNext, goPrev, isLoading } = useContext(PokeDataContext);
+  const { isLoading } = useContext(PokeDataContext);
 
   if(isLoading) {
     return <Spinner />
@@ -15,13 +16,12 @@ const PokeList = ({ className }) => {
 
   return (
     <div className={className}>
-      <div className="buttons-group">
-        <button onClick={goPrev}><i className="fas fa-angle-left"></i></button>
-        <button onClick={goNext}><i className="fas fa-angle-right"></i></button>
-      </div>
       <section className="pokeList">
         <PokeCard />
       </section>
+      <div className="buttons-group">
+        <Paginate />
+      </div>
     </div>
   );
 };
@@ -37,13 +37,12 @@ export default styled(PokeList)`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 200px;
     margin-top: 30px;
     button {
-      width: 50px;
+      width: 40px;
+      margin: 1px;
       border: none;
-      border-radius: 5px;
-      font-size: 1.5rem;
+      font-size: 1.1rem;
       box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
       cursor: pointer;
       &:hover {
