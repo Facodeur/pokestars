@@ -12,7 +12,7 @@ const useDataApi = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [interval, setInterval] = useState({
     offset: 0,
-    limit: 20
+    limit: 15
   });
 
   useEffect(() => {
@@ -49,20 +49,21 @@ const useDataApi = () => {
     setIsLoading(false);
   }
 
-  const goNext = () => {
-    if(interval.offset < 200) {
-      setInterval({...interval, offset: interval.offset +20})
-    }
+  const changePage = (num) => {
+
+    setInterval({...interval, offset: interval.offset = num})
   }
 
-  const goPrev = () => {
-    if(interval.offset > 0) {
-      setInterval({...interval, offset: interval.offset -20})
-
-    }
-  }
-
-  return { pokeList, pokeDescription, error, isLoading, getOnePoke, onePoke, goNext, goPrev }
+  return { pokeList,
+           pokeDescription, 
+           error, 
+           isLoading, 
+           getOnePoke, 
+           onePoke, 
+           changePage, 
+           setInterval, 
+           interval 
+          }
 }
 
 export default useDataApi;
