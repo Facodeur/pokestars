@@ -30,7 +30,7 @@ const PokeDetails = ({ className }) => {
       >
         {onePoke && (
           <div className={className}>
-            <Link className="btnBack" to="/"><i className="fas fa-angle-left"></i> Retour à l'accueil</Link>
+            <Link className="btnBack" to="/"><i className="fas fa-angle-left"></i> Retour à la page</Link>
             <h3>{onePoke.name}</h3>
             <PokeDescrition />
             <img src={onePoke.sprites.other.dream_world.front_default} alt="" />
