@@ -10,9 +10,9 @@ const useDataApi = () => {
   const [pokeDescription, setPokeDescription] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [interval, setInterval] = useState({
+  const [config, setConfig] = useState({
     offset: 0,
-    limit: 15
+    limit: 15,
   });
 
   useEffect(() => {
@@ -20,24 +20,20 @@ const useDataApi = () => {
 
     const getPokeList = async () => {
       try {
-        const pokemons = await P.getPokemonsList(interval)
+        const pokemons = await P.getPokemonsList(config);
         const data = pokemons.results;
-        const requests = await data.map(({name}) => 
-          P.getPokemonByName(name)
-        )
+        const requests = await data.map(({ name }) => P.getPokemonByName(name));
 
-        const results = await Promise.all(requests)
-        setPokeList(results)
+        const results = await Promise.all(requests);
+        setPokeList(results);
         setIsLoading(false);
-
       } catch (error) {
         setError(error);
         setIsLoading(false);
       }
-  }
-  getPokeList();
-  
-  }, [interval])
+    };
+    getPokeList();
+  }, [config]);
 
   const getOnePoke = async (name) => {
     setIsLoading(true);
@@ -47,23 +43,23 @@ const useDataApi = () => {
     setOnePoke(pokemon);
     setPokeDescription(species);
     setIsLoading(false);
-  }
+  };
 
   const changePage = (num) => {
+    setConfig({ ...config, offset: (config.offset = num) });
+  };
 
-    setInterval({...interval, offset: interval.offset = num})
-  }
-
-  return { pokeList,
-           pokeDescription, 
-           error, 
-           isLoading, 
-           getOnePoke, 
-           onePoke, 
-           changePage, 
-           setInterval, 
-           interval 
-          }
-}
+  return {
+    pokeList,
+    pokeDescription,
+    error,
+    isLoading,
+    getOnePoke,
+    onePoke,
+    changePage,
+    setConfig,
+    config,
+  };
+};
 
 export default useDataApi;

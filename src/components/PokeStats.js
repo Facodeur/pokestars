@@ -1,28 +1,28 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 import PokeDataContext from "../context/context";
 import styled from "styled-components";
-import ProgressBar from './ProgressBar';
+import ProgressBar from "./ProgressBar";
 
 const PokeStats = ({ className }) => {
-  
   const { onePoke } = useContext(PokeDataContext);
 
   return (
     <div className={className}>
-      {onePoke && onePoke.stats.map(stat => {
-        return (
-          <div className="stat" key={stat.stat.name}>
-            <p>{stat.stat.name}</p>
-            <ProgressBar done={stat.base_stat} />
-          </div>
-        )
-      })}
+      {onePoke &&
+        onePoke.stats.map((stat) => {
+          return (
+            <div className="stat" key={stat.stat.name}>
+              <p>{stat.stat.name}</p>
+              <ProgressBar done={stat.base_stat} />
+            </div>
+          );
+        })}
     </div>
-  )
-}
+  );
+};
 
 export default styled(PokeStats)`
-  display:flex;
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -40,4 +40,4 @@ export default styled(PokeStats)`
       margin: 0;
     }
   }
-`
+`;

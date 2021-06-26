@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 
 const PokeCard = ({ className }) => {
   const { pokeList } = useContext(PokeDataContext);
-  
 
   return (
     <>
@@ -21,10 +20,7 @@ const PokeCard = ({ className }) => {
               key={poke.name}
             >
               <Link className={className} to={`/pokestar/${poke.name}`}>
-                <img
-                  src={poke.sprites.front_default}
-                  alt={`${poke.name}`}
-                />
+                <img src={poke.sprites.front_default} alt={`${poke.name}`} />
                 <h4>{poke.name}</h4>
               </Link>
             </motion.div>

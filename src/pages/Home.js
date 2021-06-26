@@ -1,11 +1,11 @@
-import PokeList from '../components/PokeList'
+import PokeList from "../components/PokeList";
 
 const Home = () => {
   return (
     <>
       <PokeList />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

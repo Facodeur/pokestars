@@ -15,21 +15,21 @@ const App = ({ className }) => {
 
   return (
     <AnimatePresence exitBeforeEnter initial={false}>
-    <PokeDataContext.Provider value={dataApi}>
-      <GlobalStyle />
-      <div className={className}>
-        <Banner />
-        <Switch location={location} key={location.pathname}>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/pokestar/:name">
-            <PokeDetails />
-          </Route>
-        </Switch>
-        <Footer />
-      </div>
-    </PokeDataContext.Provider>
+      <PokeDataContext.Provider value={dataApi}>
+        <GlobalStyle />
+        <div className={className}>
+          <Banner />
+          <Switch location={location} key={location.pathname}>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/pokestar/:name">
+              <PokeDetails />
+            </Route>
+          </Switch>
+          <Footer />
+        </div>
+      </PokeDataContext.Provider>
     </AnimatePresence>
   );
 };
