@@ -30,7 +30,7 @@ const PokeDetails = ({ className }) => {
       >
         {onePoke && (
           <div className={className}>
-            <Link to="/"> Retour à l'accueil</Link>
+            <Link className="btnBack" to="/"><i className="fas fa-angle-left"></i> Retour à l'accueil</Link>
             <h3>{onePoke.name}</h3>
             <PokeDescrition />
             <img src={onePoke.sprites.other.dream_world.front_default} alt="" />
@@ -52,5 +52,17 @@ export default styled(PokeDetails)`
   img {
     width: 190px;
     height: 190px;
+  }
+
+  .btnBack {
+    border-radius: 5px;
+    padding: 7px;
+    margin: 5px;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+    &:hover {
+      box-shadow: 0px 0px 6px 4px rgba(255, 255, 255, 0.57);
+      transform: scale(1.02);
+      transition: 0.3s;
+    }
   }
 `;
