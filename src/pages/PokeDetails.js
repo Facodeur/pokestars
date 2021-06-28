@@ -5,8 +5,8 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { layout } from "../theme/helpers";
 import Spinner from "../components/Spinner";
-import PokeStats from "../components/PokeStats";
-import PokeDescrition from "../components/PokeDescription";
+import PokeStats from "../components/pokestars/PokeStats";
+import PokeDescrition from "../components/pokestars/PokeDescription";
 
 const PokeDetails = ({ className }) => {
   let { name } = useParams();

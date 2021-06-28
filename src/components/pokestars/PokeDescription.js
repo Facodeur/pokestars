@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import PokeDataContext from "../context/context";
+import PokeDataContext from "../../context/context";
 import styled from "styled-components";
 
 const PokeDescription = ({ className }) => {

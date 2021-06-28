@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import PokeDataContext from "../context/context";
+import PokeDataContext from "../../context/context";
 import styled from "styled-components";
-import ProgressBar from "./ProgressBar";
+import ProgressBar from "../ProgressBar";
 
 const PokeStats = ({ className }) => {
   const { onePoke } = useContext(PokeDataContext);

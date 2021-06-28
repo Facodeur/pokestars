@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import { layout } from "../theme/helpers";
+import { layout } from "../../theme/helpers";
 import PokeCard from "./PokeCard";
-import PokeDataContext from "../context/context";
-import Spinner from "./Spinner";
-import Paginate from "./Paginate";
+import PokeDataContext from "../../context/context";
+import Spinner from "../Spinner";
+import Paginate from "../Paginate";
 
 const PokeList = ({ className }) => {
   const { isLoading } = useContext(PokeDataContext);
-
+  
   if (isLoading) {
     return <Spinner />;
   }

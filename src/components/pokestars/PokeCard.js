@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import PokeDataContext from "../context/context";
+import PokeDataContext from "../../context/context";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 

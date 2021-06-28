@@ -21,10 +21,9 @@ const useDataApi = () => {
     const getPokeList = async () => {
       try {
         const pokemons = await P.getPokemonsList(config);
-        const data = pokemons.results;
-        const requests = await data.map(({ name }) => P.getPokemonByName(name));
-
+        const requests = await pokemons.results.map(({ name }) => P.getPokemonByName(name));
         const results = await Promise.all(requests);
+
         setPokeList(results);
         setIsLoading(false);
       } catch (error) {
@@ -39,7 +38,6 @@ const useDataApi = () => {
     setIsLoading(true);
     const pokemon = await P.getPokemonByName(name);
     const species = await P.getPokemonSpeciesByName(name);
-
     setOnePoke(pokemon);
     setPokeDescription(species);
     setIsLoading(false);
