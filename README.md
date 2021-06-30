@@ -5,7 +5,6 @@
 
 - React 
 - react-router-dom
-- axios
 - pokeapi-js-wrapper
 - sanitize.css
 - styled-component
