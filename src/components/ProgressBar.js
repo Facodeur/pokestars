@@ -37,7 +37,7 @@ export default styled(ProgressBar)`
     border-radius: 20px;
     position: relative;
     margin: 15px 0;
-    height: 25px;
+    height: 20px;
     width: 250px;
   }
 
