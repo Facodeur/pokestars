@@ -31,8 +31,8 @@ export default styled(PokeList)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 50px;
-  margin-top: 50px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 
   .pokeList {
     display: flex;
