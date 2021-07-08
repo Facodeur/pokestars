@@ -4,10 +4,10 @@ const Pokedex = require("pokeapi-js-wrapper");
 const P = new Pokedex.Pokedex();
 
 const useDataApi = () => {
-  const [pokeList, setPokeList] = useState(null);
-  const [onePoke, setOnePoke] = useState(null);
-  const [pokeDescription, setPokeDescription] = useState(null);
-  const [error, setError] = useState(null);
+  const [pokeList, setPokeList] = useState();
+  const [onePoke, setOnePoke] = useState();
+  const [pokeDescription, setPokeDescription] = useState();
+  const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [config, setConfig] = useState({
     offset: 0,
@@ -20,7 +20,9 @@ const useDataApi = () => {
     const getPokeList = async () => {
       try {
         const pokemons = await P.getPokemonsList(config);
-        const requests = await pokemons.results.map(({ name }) => P.getPokemonByName(name));
+        const requests = await pokemons.results.map(({ name }) =>
+          P.getPokemonByName(name)
+        );
         const results = await Promise.all(requests);
 
         setPokeList(results);
@@ -35,11 +37,18 @@ const useDataApi = () => {
 
   const getOnePoke = async (name) => {
     setIsLoading(true);
-    const pokemon = await P.getPokemonByName(name);
-    const species = await P.getPokemonSpeciesByName(name);
-    setOnePoke(pokemon);
-    setPokeDescription(species);
-    setIsLoading(false);
+  
+    try {
+      const pokemon = await P.getPokemonByName(name);
+      const species = await P.getPokemonSpeciesByName(name);
+      setOnePoke(pokemon);
+      setPokeDescription(species);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+      setError(true);
+    }
   };
 
   const changePage = (num) => {
@@ -50,6 +59,7 @@ const useDataApi = () => {
     pokeList,
     pokeDescription,
     error,
+    setError,
     isLoading,
     getOnePoke,
     onePoke,
