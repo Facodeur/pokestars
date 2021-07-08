@@ -1,7 +1,7 @@
 ## Lien du site en ligne
   - visite [https://pokestars.netlify.app/](https://pokestars.netlify.app/)
 
-## Dépendences du projet
+## Dépendances du projet
 
 - React 
 - react-router-dom
