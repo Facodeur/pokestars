@@ -2,44 +2,38 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import PokeDataContext from "../context/context";
-import Alert from "./Alert";
 
 const SearchBar = ({ className }) => {
   let history = useHistory();
 
-  const { getOnePoke } = useContext(PokeDataContext);
+  const { error, setError, errorMsg, setErrorMsg } = useContext(PokeDataContext);
 
   const [search, setSearch] = useState("");
-  const [errorMsg, setErrorMsg] = useState('');
-  const [error, setError] = useState(false);
-
-
-  console.log(`error1`, error)
 
   const getPokemon = () => {
-    if(search === "") {
+    if (search === "") {
       setError(true);
-      setErrorMsg('Please enter Name');
+      setErrorMsg("Please enter Name");
       return;
     }
-    getOnePoke(search);
+
     history.push(`/pokestar/${search}`);
-    setSearch("");
+    setError(false);
   };
 
   return (
     <>
-    {error && <Alert>{errorMsg}</Alert>}
-    <div className={className}>
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Name"
-          onChange={(event) => setSearch(event.target.value)}
-        />
+      <div className={className}>
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Name"
+            onChange={(event) => setSearch(event.target.value)}
+          />
+          {error && <p>{errorMsg}</p>}
+        </div>
+        <button onClick={getPokemon}>Search</button>
       </div>
-      <button onClick={getPokemon}>Search</button>
-    </div>
     </>
   );
 };
@@ -54,11 +48,15 @@ export default styled(SearchBar)`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    
+
     input {
       border-radius: 5px;
       margin-right: 10px;
-      border: 1px solid #ddd
+      border: 1px solid #ddd;
+      outline-style: none;
+      &:focus {
+        box-shadow: 0px 0px 4px 3px rgba(255, 255, 255, 0.57);
+      }
     }
     p {
       margin: 0;
